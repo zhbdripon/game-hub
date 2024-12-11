@@ -2,6 +2,7 @@ import { Grid, GridItem, Show } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 
 import Navbar from "./components/Navbar";
+import GameGrid from "./components/GameGrid";
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
 
   return (
     <Grid
-      templateRows={{ base: "repeat(2, 1fr)" }}
+      templateRows={{ base: "repeat(10, 1fr)" }}
       templateColumns={{ base: "repeat(4, 1fr)" }}
       gap={1}
     >
@@ -24,12 +25,12 @@ function App() {
         <Navbar />
       </GridItem>
       <Show when={width >= 992}>
-        <GridItem rowSpan={1} colSpan={2} >
+        <GridItem rowSpan={9} colSpan={2}>
           <p>aside</p>
         </GridItem>
       </Show>
-      <GridItem rowSpan={1} colSpan={width >= 992 ? 2 : 4}>
-        <p>main</p>
+      <GridItem rowSpan={9} colSpan={width >= 992 ? 2 : 4}>
+        <GameGrid />
       </GridItem>
     </Grid>
   )
