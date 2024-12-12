@@ -17,11 +17,12 @@ function App() {
 
   return (
     <Grid
+      height="100vh"
       templateRows={{ base: "repeat(10, 1fr)" }}
-      templateColumns={{ base: "repeat(4, 1fr)" }}
+      templateColumns={{ base: "repeat(10, 1fr)" }}
       gap={1}
     >
-      <GridItem rowSpan={1} colSpan={4}>
+      <GridItem rowSpan={1} colSpan={10}>
         <Navbar />
       </GridItem>
       <Show when={width >= 992}>
@@ -29,7 +30,7 @@ function App() {
           <p>aside</p>
         </GridItem>
       </Show>
-      <GridItem rowSpan={9} colSpan={width >= 992 ? 2 : 4}>
+      <GridItem rowSpan={9} colSpan={width >= 992 ? 8 : 10}>
         <GameGrid />
       </GridItem>
     </Grid>
