@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 
 import Navbar from "./components/Navbar";
 import GameGrid from "./components/GameGrid";
+import GenreList from "./components/GenreList";
 
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
       </GridItem>
       <Show when={width >= 992}>
         <GridItem rowSpan={9} colSpan={2}>
-          <p>aside</p>
+          <GenreList />
         </GridItem>
       </Show>
       <GridItem rowSpan={9} colSpan={width >= 992 ? 8 : 10}>
