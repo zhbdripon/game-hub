@@ -1,16 +1,26 @@
-import useGenres from "@/hook/useGenres";
+import useGenres, { Genre } from "@/hook/useGenres";
 import { getOptimizeImageUrl } from "@/services/image-url";
-import { HStack, Image, List } from "@chakra-ui/react";
+import { HStack, Image, List, Button } from "@chakra-ui/react";
 
-const GenreList = () => {
+interface Props {
+  onSelectGenre: (genres: Genre) => void;
+}
+
+const GenreList = ({ onSelectGenre }: Props) => {
   const { data: genres } = useGenres();
   return (
     <List.Root variant="plain">
       {genres.map((genre) => (
-        <List.Item key={genre.id} paddingY={1}>
+        <List.Item key={genre.id}>
           <HStack>
-            <Image src={getOptimizeImageUrl(genre.image_background)} boxSize="32px" borderRadius={8} />
-            {genre.name} 
+            <Image
+              src={getOptimizeImageUrl(genre.image_background)}
+              boxSize="32px"
+              borderRadius={8}
+            />
+            <Button variant="plain" onClick={() => onSelectGenre(genre)}>
+              {genre.name}
+            </Button>
           </HStack>
         </List.Item>
       ))}

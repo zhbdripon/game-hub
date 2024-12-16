@@ -1,15 +1,16 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
+import { Grid, GridItem, Show } from "@chakra-ui/react"
 
 import Navbar from "./components/Navbar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
+import { Genre } from "./hook/useGenres";
 
 const LARGE_SCREEN_WIDTH = 992
 
-
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -30,11 +31,11 @@ function App() {
       </GridItem>
       <Show when={width >= LARGE_SCREEN_WIDTH}>
         <GridItem rowSpan={9} colSpan={1} paddingX={5}>
-          <GenreList />
+          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
         </GridItem>
       </Show>
       <GridItem rowSpan={9} colSpan={width >= LARGE_SCREEN_WIDTH ? 9 : 10}>
-        <GameGrid />
+        <GameGrid selectedGenre={selectedGenre}/>
       </GridItem>
     </Grid>
   )
