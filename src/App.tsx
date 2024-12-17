@@ -10,12 +10,14 @@ import { Platform } from "./hook/useGames";
 
 const LARGE_SCREEN_WIDTH = 992;
 
+export interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+}
+
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-    null
-  );
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -36,18 +38,19 @@ function App() {
       </GridItem>
       <Show when={width >= LARGE_SCREEN_WIDTH}>
         <GridItem rowSpan={9} colSpan={1} paddingX={5}>
-          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+          <GenreList
+            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+          />
         </GridItem>
       </Show>
       <GridItem rowSpan={9} colSpan={width >= LARGE_SCREEN_WIDTH ? 9 : 10}>
         <PlatformSelector
-          selectedPlatform={selectedPlatform}
-          onPlatformSelect={(platform) => setSelectedPlatform(platform)}
+          selectedPlatform={gameQuery.platform}
+          onPlatformSelect={(platform) =>
+            setGameQuery({ ...gameQuery, platform })
+          }
         />
-        <GameGrid
-          selectedGenre={selectedGenre}
-          selectedPlatform={selectedPlatform}
-        />
+        <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
   );
