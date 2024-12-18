@@ -10,7 +10,7 @@ interface GameCardProps {
 
 const GameCard = ({game}: GameCardProps) => {
 
-  if (!game)  return;
+  if (!game)  return null;
 
   return (
     <Card.Root>

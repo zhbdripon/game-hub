@@ -9,7 +9,7 @@ interface Props {
 const GenreList = ({ onSelectGenre }: Props) => {
   const { data: genres } = useGenres();
 
-  if (!genres) return;
+  if (!genres) return null;
 
   return (
     <>
