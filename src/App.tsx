@@ -36,7 +36,7 @@ function App() {
     <Grid
       height="100vh"
       templateRows={{ base: "repeat(10, 1fr)" }}
-      templateColumns={{ base: "230px repeat(9, 1fr)" }}
+      templateColumns={{ base: "200px repeat(9, 1fr)" }}
       gap={1}
     >
       <GridItem rowSpan={1} colSpan={10}>
