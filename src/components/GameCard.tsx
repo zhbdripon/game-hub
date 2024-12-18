@@ -9,6 +9,9 @@ interface GameCardProps {
 }
 
 const GameCard = ({game}: GameCardProps) => {
+
+  if (!game)  return;
+
   return (
     <Card.Root>
       <Image src={getOptimizeImageUrl(game.background_image)}/>
