@@ -8,6 +8,7 @@ import { Genre } from "./hook/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hook/useGames";
 import SortSelector from "./components/SortSelector";
+import GameHeading from "./components/GameHeading";
 
 const LARGE_SCREEN_WIDTH = 992;
 
@@ -35,7 +36,7 @@ function App() {
     <Grid
       height="100vh"
       templateRows={{ base: "repeat(10, 1fr)" }}
-      templateColumns={{ base: "200px repeat(9, 1fr)" }}
+      templateColumns={{ base: "230px repeat(9, 1fr)" }}
       gap={1}
     >
       <GridItem rowSpan={1} colSpan={10}>
@@ -50,8 +51,13 @@ function App() {
           />
         </GridItem>
       </Show>
-      <GridItem rowSpan={9} colSpan={width >= LARGE_SCREEN_WIDTH ? 9 : 10}>
-        <HStack padding={3} marginBottom={2}>
+      <GridItem
+        rowSpan={9}
+        colSpan={width >= LARGE_SCREEN_WIDTH ? 9 : 10}
+        paddingX={3}
+      >
+        <GameHeading gameQuery={gameQuery} />
+        <HStack paddingY={3} marginBottom={2}>
           <PlatformSelector
             selectedPlatform={gameQuery.platform}
             onPlatformSelect={(platform) =>
