@@ -3,6 +3,7 @@ import axios, { AxiosRequestConfig } from "axios";
 export interface ListApiResponse<T> {
   count: number;
   results: T[];
+  next?: string;
 }
 
 const axiosInstance = axios.create({
@@ -14,25 +15,19 @@ const axiosInstance = axios.create({
 
 class APIClient<T> {
   endpoint: string;
-  config: AxiosRequestConfig;
 
   constructor(endpoint: string) {
     this.endpoint = endpoint;
-    this.config = {};
   }
 
-  getAll = () => {
+  getAll = (config: AxiosRequestConfig) => {
     return axiosInstance
-      .get<ListApiResponse<T>>(this.endpoint, this.config)
+      .get<ListApiResponse<T>>(this.endpoint, config)
       .then((res) => res.data);
   };
 
   post = (data: T) => {
     return axiosInstance.post<T>(this.endpoint, data).then((res) => res.data);
-  };
-
-  setConfig = (config: AxiosRequestConfig) => {
-    this.config = config
   };
 }
 
