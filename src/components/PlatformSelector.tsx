@@ -26,7 +26,7 @@ const PlatformSelector = ({ onPlatformSelect, selectedPlatform }: Props) => {
         </Button>
       </MenuTrigger>
       <MenuContent>
-        {platforms.map((platform) => {
+        {platforms?.map((platform) => {
           return (
             <MenuItem
               key={platform.id}
