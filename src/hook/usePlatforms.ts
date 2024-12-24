@@ -1,6 +1,10 @@
 import apiClient, { ListApiResponse } from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
-import { Platform } from "./useGames";
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
 
 const usePlatforms = () => {
   const { data } = useQuery({

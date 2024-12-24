@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
 import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 
-import Navbar from "./components/Navbar";
 import GameGrid from "./components/GameGrid";
-import GenreList from "./components/GenreList";
-import { Genre } from "./hook/useGenres";
-import PlatformSelector from "./components/PlatformSelector";
-import { Platform } from "./hook/useGames";
-import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import GenreList from "./components/GenreList";
+import Navbar from "./components/Navbar";
+import PlatformSelector from "./components/PlatformSelector";
+import SortSelector from "./components/SortSelector";
+import { Genre } from "./hook/useGenres";
+import { Platform } from "./hook/usePlatforms";
 
 const LARGE_SCREEN_WIDTH = 992;
 

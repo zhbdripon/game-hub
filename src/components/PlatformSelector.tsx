@@ -5,8 +5,7 @@ import {
   MenuRoot,
   MenuTrigger,
 } from "@/components/ui/menu";
-import { Platform } from "@/hook/useGames";
-import usePlatforms from "@/hook/usePlatforms";
+import usePlatforms, { Platform } from "@/hook/usePlatforms";
 import { BsChevronDown } from "react-icons/bs";
 
 interface Props {
