@@ -1,4 +1,4 @@
-import apiClient, { ListApiResponse } from "@/services/api-client";
+import ApiClient from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
 
 export interface Genre {
@@ -7,16 +7,13 @@ export interface Genre {
   slug: string;
   image_background: string;
 }
-const useGenres = () => {
-  const fetchQuery = () => {
-    return apiClient
-      .get<ListApiResponse<Genre>>("/genres")
-      .then((res) => res.data);
-  };
 
+const apiClient = new ApiClient<Genre>("/genres");
+
+const useGenres = () => {
   const { data } = useQuery({
     queryKey: ["genres"],
-    queryFn: fetchQuery,
+    queryFn: apiClient.getAll,
   });
 
   return { data: data?.results };
