@@ -1,14 +1,12 @@
-import useGenres, { Genre } from "@/hook/useGenres";
+import useGenres from "@/hook/useGenres";
 import { getOptimizeImageUrl } from "@/services/image-url";
+import useGameQueryStore from "@/store";
 import { Button, Heading, HStack, Image, List, Text } from "@chakra-ui/react";
 
-interface Props {
-  onSelectGenre: (genres: Genre) => void;
-  selectedGenreId?: number;
-}
-
-const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
+const GenreList = () => {
   const { data: genres } = useGenres();
+  const setGenreId = useGameQueryStore((s) => s.setGenreId);
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
 
   if (!genres) return null;
 
@@ -30,7 +28,7 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
               <Button
                 variant="plain"
                 paddingX="3px"
-                onClick={() => onSelectGenre(genre)}
+                onClick={() => setGenreId(genre.id)}
               >
                 <Text
                   fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}

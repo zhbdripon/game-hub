@@ -1,12 +1,11 @@
 import { Input } from "@chakra-ui/react";
 import { InputGroup } from "./ui/input-group";
 import { BsSearch } from "react-icons/bs";
+import useGameQueryStore from "@/store";
 
-interface Props {
-  onSearchGames: (search: string) => void;
-}
+const SearchInput = () => {
+  const setGameSearch = useGameQueryStore((s) => s.setSearchText);
 
-const SearchInput = ({ onSearchGames }: Props) => {
   function debounce(func: Function, wait: number) {
     let timeout: NodeJS.Timeout;
 
@@ -20,7 +19,7 @@ const SearchInput = ({ onSearchGames }: Props) => {
 
   const onInputChange = (e: InputEvent) => {
     const inputElement = e.target as HTMLInputElement;
-    onSearchGames(inputElement.value);
+    setGameSearch(inputElement.value);
   };
 
   return (

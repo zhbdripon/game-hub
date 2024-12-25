@@ -1,29 +1,30 @@
-import { Game } from '@/hook/useGames'
-import { Card, Heading, HStack, Image, Skeleton, Text } from '@chakra-ui/react'
-import PlatformIconList from './PlatformIconList'
-import CriticScore from './CriticScore'
-import { getOptimizeImageUrl } from '@/services/image-url'
+import { Game } from "@/hook/useGames";
+import { getOptimizeImageUrl } from "@/services/image-url";
+import { Card, Heading, HStack, Image } from "@chakra-ui/react";
+import CriticScore from "./CriticScore";
+import PlatformIconList from "./PlatformIconList";
 
 interface GameCardProps {
-  game: Game
+  game: Game;
 }
 
-const GameCard = ({game}: GameCardProps) => {
-
-  if (!game)  return null;
+const GameCard = ({ game }: GameCardProps) => {
+  if (!game) return null;
 
   return (
     <Card.Root>
-      <Image src={getOptimizeImageUrl(game.background_image)}/>
+      <Image src={getOptimizeImageUrl(game.background_image)} />
       <Card.Body>
         <HStack justifyContent="space-between" marginBottom={3}>
-          <PlatformIconList platforms={game.parent_platforms.map(p => p.platform)}/>
-          <CriticScore score={game.metacritic}/>
+          <PlatformIconList
+            platforms={game.parent_platforms?.map((p) => p.platform)}
+          />
+          <CriticScore score={game.metacritic} />
         </HStack>
         <Heading fontSize="xl">{game.name}</Heading>
       </Card.Body>
     </Card.Root>
-  )
-}
+  );
+};
 
-export default GameCard
+export default GameCard;

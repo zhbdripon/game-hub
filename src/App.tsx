@@ -10,18 +10,8 @@ import SortSelector from "./components/SortSelector";
 
 const LARGE_SCREEN_WIDTH = 992;
 
-export interface GameQuery {
-  genre_id?: number;
-  platform_id?: number;
-  ordering: string;
-  search: string;
-}
-
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
-  const [gameQuery, setGameQuery] = useState<GameQuery>({
-    ordering: "",
-  } as GameQuery);
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -38,18 +28,11 @@ function App() {
       gap={1}
     >
       <GridItem rowSpan={1} colSpan={10}>
-        <Navbar
-          onSearchGames={(search) => setGameQuery({ ...gameQuery, search })}
-        />
+        <Navbar />
       </GridItem>
       <Show when={width >= LARGE_SCREEN_WIDTH}>
         <GridItem rowSpan={9} colSpan={1} paddingX={5}>
-          <GenreList
-            selectedGenreId={gameQuery.genre_id}
-            onSelectGenre={(genre) =>
-              setGameQuery({ ...gameQuery, genre_id: genre.id })
-            }
-          />
+          <GenreList />
         </GridItem>
       </Show>
       <GridItem
@@ -57,22 +40,12 @@ function App() {
         colSpan={width >= LARGE_SCREEN_WIDTH ? 9 : 10}
         paddingX={3}
       >
-        <GameHeading gameQuery={gameQuery} />
+        <GameHeading />
         <HStack paddingY={3} marginBottom={2}>
-          <PlatformSelector
-            selectedPlatformId={gameQuery.platform_id}
-            onPlatformSelect={(platform) =>
-              setGameQuery({ ...gameQuery, platform_id: platform?.id })
-            }
-          />
-          <SortSelector
-            selectedSortOrder={gameQuery.ordering}
-            onSelectSortOrder={(order) =>
-              setGameQuery({ ...gameQuery, ordering: order })
-            }
-          />
+          <PlatformSelector />
+          <SortSelector />
         </HStack>
-        <GameGrid gameQuery={gameQuery} />
+        <GameGrid />
       </GridItem>
     </Grid>
   );
