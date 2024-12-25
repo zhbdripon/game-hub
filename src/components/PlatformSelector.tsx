@@ -5,6 +5,7 @@ import {
   MenuRoot,
   MenuTrigger,
 } from "@/components/ui/menu";
+import usePlatform from "@/hook/usePlatform";
 import usePlatforms, { Platform } from "@/hook/usePlatforms";
 import { BsChevronDown } from "react-icons/bs";
 
@@ -15,9 +16,7 @@ interface Props {
 
 const PlatformSelector = ({ onPlatformSelect, selectedPlatformId }: Props) => {
   const { data: platforms } = usePlatforms();
-  const selectedPlatform = platforms?.find(
-    (platform) => platform.id === selectedPlatformId
-  );
+  const selectedPlatform = usePlatform(selectedPlatformId);
 
   return (
     <MenuRoot>

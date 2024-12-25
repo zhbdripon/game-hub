@@ -27,6 +27,8 @@ const GameGrid = ({ gameQuery }: Props) => {
     0
   );
 
+  console.log(isLoading)
+
   return (
     <InfiniteScroll
       dataLength={itemFetchedCount}

@@ -1,3 +1,4 @@
+import genres from "@/data/genres";
 import ApiClient from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
 
@@ -14,6 +15,7 @@ const useGenres = () => {
   const { data } = useQuery({
     queryKey: ["genres"],
     queryFn: apiClient.getAll,
+    initialData: genres,
   });
 
   return { data: data?.results };

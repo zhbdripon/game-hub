@@ -1,3 +1,4 @@
+import platforms from "@/data/platforms";
 import ApiClient from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
 export interface Platform {
@@ -12,6 +13,7 @@ const usePlatforms = () => {
   const { data } = useQuery({
     queryKey: ["platforms"],
     queryFn: apiClient.getAll,
+    initialData: platforms,
   });
 
   return { data: data?.results };
