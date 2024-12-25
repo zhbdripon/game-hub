@@ -4,11 +4,11 @@ import { Button, Heading, HStack, Image, List, Text } from "@chakra-ui/react";
 
 interface Props {
   onSelectGenre: (genres: Genre) => void;
+  selectedGenreId?: number;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
   const { data: genres } = useGenres();
-
   if (!genres) return null;
 
   return (
@@ -31,7 +31,11 @@ const GenreList = ({ onSelectGenre }: Props) => {
                 paddingX="3px"
                 onClick={() => onSelectGenre(genre)}
               >
-                <Text>{genre.name}</Text>
+                <Text
+                  fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
+                >
+                  {genre.name}
+                </Text>
               </Button>
             </HStack>
           </List.Item>

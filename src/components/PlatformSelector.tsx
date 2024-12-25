@@ -10,11 +10,14 @@ import { BsChevronDown } from "react-icons/bs";
 
 interface Props {
   onPlatformSelect: (platform: Platform | null) => void;
-  selectedPlatform: Platform | null;
+  selectedPlatformId: number | undefined;
 }
 
-const PlatformSelector = ({ onPlatformSelect, selectedPlatform }: Props) => {
+const PlatformSelector = ({ onPlatformSelect, selectedPlatformId }: Props) => {
   const { data: platforms } = usePlatforms();
+  const selectedPlatform = platforms?.find(
+    (platform) => platform.id === selectedPlatformId
+  );
 
   return (
     <MenuRoot>
