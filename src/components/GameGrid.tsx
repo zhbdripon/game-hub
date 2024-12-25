@@ -1,5 +1,5 @@
-import React from "react";
 import { SimpleGrid, Text } from "@chakra-ui/react";
+import React from "react";
 
 import { GameQuery } from "@/App";
 import useGames from "@/hook/useGames";
@@ -15,19 +15,13 @@ interface Props {
 const GameGrid = ({ gameQuery }: Props) => {
   const { data, error, isLoading, hasNextPage, fetchNextPage } =
     useGames(gameQuery);
+  useGames(gameQuery);
   const skeletonIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-  if (!data || !data.pages) {
-    return null;
-  }
   if (error) return <Text>{error.message}</Text>;
 
-  const itemFetchedCount = data.pages.reduce(
-    (sum, page) => (sum += page.results.length),
-    0
-  );
-
-  console.log(isLoading)
+  const itemFetchedCount =
+    data?.pages.reduce((sum, page) => (sum += page.results.length), 0) || 0;
 
   return (
     <InfiniteScroll
