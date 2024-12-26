@@ -8,16 +8,18 @@ import useGameQueryStore from "@/store";
 export interface Game {
   id: number;
   name: string;
+  slug: string;
   background_image: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
+  description_raw: string;
 }
 
 const apiClient = new ApiClient<Game>("/games");
 
 const useGames = () => {
   const gameQuery = useGameQueryStore((s) => s.gameQuery);
-  
+
   return useInfiniteQuery<ListApiResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
     queryFn: ({ pageParam = 1 }) =>
