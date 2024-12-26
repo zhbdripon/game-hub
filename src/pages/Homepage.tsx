@@ -7,7 +7,7 @@ import GenreList from "@/components/GenreList";
 import PlatformSelector from "@/components/PlatformSelector";
 import SortSelector from "@/components/SortSelector";
 
-const LARGE_SCREEN_WIDTH = 992;
+export const LARGE_SCREEN_WIDTH = 992;
 
 function homepage() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -26,7 +26,7 @@ function homepage() {
           <GenreList />
         </GridItem>
       </Show>
-      <GridItem colSpan={width >= LARGE_SCREEN_WIDTH ? 1 : 2} paddingX={3}>
+      <GridItem colSpan={{lg: 1, base: 2}} paddingX={3}>
         <GameHeading />
         <HStack paddingY={3} marginBottom={2}>
           <PlatformSelector />

@@ -9,7 +9,7 @@ const GameTrailer = ({ gameSlug }: Props) => {
   const { data, error, isLoading } = useGameTrailer(gameSlug!);
   const gameTrailers = data?.results;
 
-  if (error || !gameTrailers) return null;
+  if (error || !gameTrailers || gameTrailers.length < 1) return null;
 
   const randomTrailerIndex = Math.floor(
     Math.random() * (gameTrailers.length || 0)
