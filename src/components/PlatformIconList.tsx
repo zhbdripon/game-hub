@@ -20,6 +20,8 @@ interface Props {
 }
 
 const PlatformIconList = ({ platforms }: Props) => {
+  if (!platforms || platforms.length < 0) return null;
+
   const iconMap: { [key: string]: ReactNode } = {
     pc: <FaWindows />,
     playstation: <FaPlaystation />,
