@@ -1,4 +1,4 @@
-import useGameTrailer from "@/hook/useGametrailer";
+import useGameTrailer from "@/hook/useGameTrailer";
 import { Box } from "@chakra-ui/react";
 
 interface Props {

@@ -18,6 +18,7 @@ const ExpandableText = ({ value }: Props) => {
       {isLargeText && !expand ? value.slice(0, TEXT_THRESHOLD)+"... " : value}{" "}
       {isLargeText && (
         <Button
+          marginLeft={2}
           size="xs"
           fontWeight="bold"
           colorPalette="yellow"

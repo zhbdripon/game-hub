@@ -29,7 +29,7 @@ const useGameQueryStore = create<GameQueryStore>((set) => ({
   setSortOrder: (sortOrder) =>
     set((store) => ({
       ...store,
-      gameQuery: { ...store.gameQuery, sortOrder },
+      gameQuery: { ...store.gameQuery, ordering: sortOrder },
     })),
 }));
 
