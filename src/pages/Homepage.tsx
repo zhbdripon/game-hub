@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import GameGrid from "@/components/GameGrid";
 import GameHeading from "@/components/GameHeading";
+import GameReset from "@/components/GameReset";
 import GenreList from "@/components/GenreList";
 import PlatformSelector from "@/components/PlatformSelector";
 import SortSelector from "@/components/SortSelector";
@@ -11,6 +12,7 @@ export const LARGE_SCREEN_WIDTH = 992;
 
 function homepage() {
   const [width, setWidth] = useState(window.innerWidth);
+
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -31,6 +33,7 @@ function homepage() {
         <HStack paddingY={3} marginBottom={2}>
           <PlatformSelector />
           <SortSelector />
+          <GameReset />
         </HStack>
         <GameGrid />
       </GridItem>
