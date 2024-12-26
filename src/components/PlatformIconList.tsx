@@ -1,4 +1,4 @@
-import { Platform } from "@/hook/usePlatforms";
+import { Platform } from "@/entities/Platform";
 import { HStack, Icon } from "@chakra-ui/react";
 
 import { ReactNode } from "react";
