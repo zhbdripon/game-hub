@@ -3,7 +3,7 @@ import GameAttributes from "@/components/GameAttributes";
 import GameScreenshot from "@/components/GameScreenshot";
 import GameTrailer from "@/components/GameTrailer";
 import useGame from "@/hook/useGame";
-import { Heading, Spinner } from "@chakra-ui/react";
+import { Grid, GridItem, Heading, Spinner } from "@chakra-ui/react";
 import { useParams } from "react-router";
 
 const GameDetailPage = () => {
@@ -14,14 +14,17 @@ const GameDetailPage = () => {
   if (error || !game || !gameSlug) throw Error("Game fetch failed");
 
   return (
-    <>
-      <Heading>{game?.name}</Heading>
-      <ExpandableText value={game.description_raw} />
-      <GameAttributes game={game} />
-      <GameTrailer gameSlug={gameSlug} />
-      <GameScreenshot id={game.id} />
-      
-    </>
+    <Grid templateColumns={{ lg: "1fr 1fr", md: "1fr" }}>
+      <GridItem colSpan={1}>
+        <Heading>{game?.name}</Heading>
+        <ExpandableText value={game.description_raw} />
+        <GameAttributes game={game} />
+      </GridItem>
+      <GridItem colSpan={1}>
+        <GameTrailer gameSlug={gameSlug} />
+        <GameScreenshot id={game.id} />
+      </GridItem>
+    </Grid>
   );
 };
 
