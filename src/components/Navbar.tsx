@@ -1,6 +1,6 @@
 import Logo from "@/assets/logo.webp";
-import useGameQueryStore from "@/store";
 import { HStack, Image } from "@chakra-ui/react";
+import { Link } from "react-router";
 import ColorModeSwitcher from "./ColorModeSwitcher";
 import SearchInput from "./SearchInput";
 
@@ -9,10 +9,11 @@ interface Props {
 }
 
 const Navbar = () => {
-
   return (
     <HStack paddingX={4}>
-      <Image src={Logo} width={50} height={50} />
+      <Link to="/">
+        <Image src={Logo} height="50px" objectFit="cover" />
+      </Link>
       <SearchInput />
       <ColorModeSwitcher />
     </HStack>

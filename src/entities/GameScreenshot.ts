@@ -1,4 +1,4 @@
-interface GameScreenshot {
+export interface GameScreenshot {
   image: string;
   hidden: boolean;
-}
+} 
